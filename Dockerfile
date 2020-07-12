@@ -24,6 +24,7 @@ RUN apt-get update && \
         libcurl4-gnutls-dev \
         libzip-dev \
 		libonig-dev \
+		ssh \
         libmagickwand-dev --no-install-recommends \
     && docker-php-ext-install -j$(nproc) iconv gd pdo_mysql pcntl pdo_sqlite zip curl bcmath opcache mbstring soap mysqli xml\
     && pecl install imagick \
