@@ -35,7 +35,7 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y \
     gcc make autoconf libc-dev pkg-config libmcrypt-dev \
-    && pecl install mcrypt-1.0.2
+    && pecl install mcrypt-1.0.3
 
 RUN bash -c "echo extension=mcrypt.so > /usr/local/etc/php/conf.d/mcrypt.ini"
 
