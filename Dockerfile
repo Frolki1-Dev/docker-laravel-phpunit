@@ -2,7 +2,7 @@ FROM php:7.4-fpm
 
 MAINTAINER Frank Giger <mail@frank-giger.ch>
 
-ENV LANG de_DE.utf8
+ENV LANG en_US.utf8
 
 RUN php -r "copy('https://getcomposer.org/installer', '/tmp/composer-setup.php');"
 RUN php /tmp/composer-setup.php --no-ansi --install-dir=/usr/local/bin --filename=composer && \
@@ -23,6 +23,7 @@ RUN apt-get update && \
         libsqlite3-dev \
         libcurl4-gnutls-dev \
         libzip-dev \
+		libonig-dev \
         libmagickwand-dev --no-install-recommends \
     && docker-php-ext-install -j$(nproc) iconv gd pdo_mysql pcntl pdo_sqlite zip curl bcmath opcache mbstring soap mysqli xml\
     && pecl install imagick \
