@@ -35,11 +35,14 @@ RUN apt-get update && \
 RUN apt-get update && \
     apt-get install -y \
     gcc make autoconf libc-dev pkg-config libmcrypt-dev \
-    && pecl install mcrypt-1.0.3
+    && pecl install mcrypt-1.0.3 \
+	&& pecl install xdebug
 
 RUN bash -c "echo extension=mcrypt.so > /usr/local/etc/php/conf.d/mcrypt.ini"
+RUN bash -c "echo zend_extension=xdebug.so > /usr/local/etc/php/conf.d/xdebug.ini"
 
 RUN php -i | grep "mcrypt" 
+RUN php -i | grep "xdebug" 
 
 RUN docker-php-ext-install exif \
     && docker-php-ext-enable exif
