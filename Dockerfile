@@ -32,6 +32,9 @@ RUN apt-get update && \
     && docker-php-ext-install -j$(nproc) gd \
     && docker-php-ext-enable iconv gd pdo_mysql pcntl pdo_sqlite zip curl bcmath opcache mbstring imagick soap mysqli xml \
     && apt-get autoremove -y
+	
+RUN pecl install redis \
+    && docker-php-ext-enable redis	
 
 RUN apt-get update && \
     apt-get install -y \
